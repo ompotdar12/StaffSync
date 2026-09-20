@@ -5,7 +5,7 @@ import LeaveApplication from "../models/LeaveApplication.js";
 import sendEmail from "../config/nodemailer.js";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "fullstack-ems" });
+export const inngest = new Inngest({ id: "StaffSync" });
 
 // Auto Check-out for employees
 const autoCheckOut = inngest.createFunction(
@@ -168,3 +168,7 @@ export const functions = [
     leaveApplicationReminder,
     attendanceReminderCron
 ];
+
+// autoCheckOut — When the backend sends employee/check-out, it waits 9 hours. If the employee still hasn't checked out, it sends a reminder email. After another 1 hour, if they still haven't checked out, it automatically marks them as checked out, sets 4 working hours, Half Day, and LATE.
+// leaveApplicationReminder — When a leave application is created with the leave/pending event, it waits 24 hours. If the leave is still PENDING, it sends an email to the admin reminding them to take action.
+// attendanceReminderCron — This runs every day at 11:30 AM IST automatically. It finds active employees who are not on approved leave and haven't checked in, then sends them an email reminding them to mark their attendance.

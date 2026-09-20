@@ -11,3 +11,5 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
+<!-- The `<div id="root"></div>` in `index.html` creates a normal HTML element that acts as the **mounting point (root container) for the React application**. The `main.jsx` file is then loaded through the `<script>` tag and uses `document.getElementById('root')` to find this element. React's `createRoot()` attaches the React application to this `root` element and renders the `App` component inside it. Therefore, all components that are part of the React component tree—such as `App`, Navbar, Home, Sidebar, etc.—are ultimately rendered inside the `<div id="root"></div>` in the browser. -->
